@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="crest">SMS</span>
+    <div>
+      <h1>Student Management System</h1>
+      <p class="tagline">Registry of enrolled students &mdash; add, update, and track records</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- FORM PANEL -->
+  <section class="panel form-panel" aria-labelledby="form-heading">
+    <h2 id="form-heading"><span id="form-mode">New Entry</span></h2>
+
+    <form id="student-form" novalidate>
+      <input type="hidden" id="student-id">
+
+      <div class="field">
+        <label for="name">Student name</label>
+        <input type="text" id="name" placeholder="e.g. Supriya">
+        <span class="error" id="err-name"></span>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="e.g. supriya@gmail.com">
+        <span class="error" id="err-email"></span>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" placeholder="10-digit number" maxlength="10">
+        <span class="error" id="err-phone"></span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="department">Department</label>
+          <select id="department">
+            <option value="">Select</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="IT">IT</option>
+          </select>
+          <span class="error" id="err-department"></span>
+        </div>
+
+        <div class="field">
+          <label for="year">Year</label>
+          <select id="year">
+            <option value="">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <span class="error" id="err-year"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio"><input type="radio" name="gender" value="Male"> Male</label>
+          <label class="radio"><input type="radio" name="gender" value="Female"> Female</label>
+          <label class="radio"><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+        <span class="error" id="err-gender"></span>
+      </div>
+
+      <div class="field">
+        <label for="address">Address</label>
+        <textarea id="address" rows="2" placeholder="e.g. Madurai"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" id="submit-btn" class="btn btn-primary">Add student</button>
+        <button type="button" id="cancel-btn" class="btn btn-ghost hidden">Cancel edit</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- LIST PANEL -->
+  <section class="panel list-panel" aria-labelledby="list-heading">
+    <div class="list-header">
+      <h2 id="list-heading">Student Records <span id="count-badge" class="badge">0</span></h2>
+      <div class="search-box">
+        <input type="search" id="search-input" placeholder="Search by name, email or department&hellip;">
+      </div>
+    </div>
+
+    <div id="banner" class="banner hidden" role="status"></div>
+
+    <div class="table-wrap">
+      <table id="student-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Dept</th>
+            <th>Year</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="student-tbody">
+          <!-- rows injected by script.js -->
+        </tbody>
+      </table>
+      <p id="empty-state" class="empty-state hidden">No students yet &mdash; add your first record on the left.</p>
+    </div>
+  </section>
+
+</main>
+
+<div id="confirm-modal" class="modal-backdrop hidden">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <h3 id="confirm-title">Delete this student?</h3>
+    <p id="confirm-body">This action cannot be undone.</p>
+    <div class="modal-actions">
+      <button id="confirm-cancel" class="btn btn-ghost">Cancel</button>
+      <button id="confirm-delete" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
